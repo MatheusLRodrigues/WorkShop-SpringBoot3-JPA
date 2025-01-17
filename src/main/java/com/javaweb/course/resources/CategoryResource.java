@@ -13,7 +13,7 @@ import com.javaweb.course.entities.Category;
 import com.javaweb.course.services.CategoryService;
 
 @RestController
-@RequestMapping(value = "/category")
+@RequestMapping(value = "/categories")
 
 public class CategoryResource {
 
