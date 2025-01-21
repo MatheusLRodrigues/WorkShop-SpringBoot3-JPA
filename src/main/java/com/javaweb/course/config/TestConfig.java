@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Profile;
 import com.javaweb.course.entities.Category;
 import com.javaweb.course.entities.Order;
 import com.javaweb.course.entities.OrderItem;
+import com.javaweb.course.entities.Payment;
 import com.javaweb.course.entities.Product;
 import com.javaweb.course.entities.User;
 import com.javaweb.course.entities.enums.OrderStatus;
@@ -79,7 +80,12 @@ public class TestConfig implements CommandLineRunner {
 		OrderItem oi4 = new OrderItem(o3, p5, 2, p5.getPrice());
 
 		orderItemRepository.saveAll(Arrays.asList(oi1, oi2, oi3, oi4));
-
+		
+		Payment pay1 = new Payment(null, Instant.parse("2019-06-20T21:53:07Z"), o1);
+		//Para salvar um objeto dependente 1:1 devemos fazer uma associação de mão dupla utilizando o Order o1 nesse caso
+		o1.setPayment(pay1);
+		
+		orderRepository.save(o1);
 	}
 
 }
